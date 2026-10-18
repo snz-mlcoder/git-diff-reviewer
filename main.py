@@ -13,8 +13,14 @@ def main():
     parser.add_argument("--target", required=True, help="Target branch/commit")
 
     args = parser.parse_args()
-    diff_text = get_diff(args.repo, args.base, args.target)
-    review_result = review_diff(diff_text=diff_text)
+    try:
+        diff_text = get_diff(args.repo, args.base, args.target)
+        review_result = review_diff(diff_text=diff_text)
+
+    except Exception as e:
+        print(f"Error occurred while fetching diff: {e}")
+        sys.exit(2)
+        
     report = generate_diff_review_report(result=review_result)
     print(report)
 
