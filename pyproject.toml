@@ -9,4 +9,7 @@ dependencies = [
     "langchain>=1.4.5",
     "langchain-openai>=1.7.1",
     "pydantic>=2.14.1",
+    "pytest>=9.1.1",
 ]
+[tool.pytest.ini_options]
+pythonpath = ["."]
